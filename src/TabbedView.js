@@ -38,7 +38,7 @@ class TabbedView extends Component {
           { opacity: isSelected ? 1 : 0 },
         ]}
       >
-        <StaticContainer shouldUpdate={isSelected}>
+        <StaticContainer shouldUpdate={true}>
           {this.props.renderScene(navigationState, index)}
         </StaticContainer>
       </View>
@@ -50,9 +50,6 @@ class TabbedView extends Component {
     const { index, children } = this.props.navigationState;
     children.forEach((item, i) => {
       const key = item.key;
-      if (i !== index && !this.renderedSceneKeys[key]) {
-        return;
-      }
       this.renderedSceneKeys[key] = true;
       scenes.push(this.renderScene(item, i));
     });
